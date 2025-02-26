@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="writeups">
+    <h1>Writeups and Papers</h1>
+    <div class="card">
+        <h2>AI Phishing Email Chain and Legitimacy Tester Using Scraped LinkedIn Profiles</h2>
+        <p>An exploration of AI-driven phishing techniques, utilizing scraped LinkedIn profiles to test email chain legitimacy and enhance cybersecurity measures.</p>
+        <a href="{{ url_for('static', filename='writeups/AustinPaulley_AutomaticLinkdenScraperAndLigitamancyTester.pdf') }}" class="project-link">View PDF</a>
+    </div>
+    <div class="card">
+        <h2>Building Trust in the Cyber Frontier</h2>
+        <p>A discussion on establishing trust in cybersecurity, focusing on innovative strategies to secure digital landscapes and foster reliable systems.</p>
+        <a href="{{ url_for('static', filename='writeups/AustinPaulley_SeniorCredo') }}" class="project-link">View PDF</a>
+    </div>
+    <!-- Add more writeups here as needed -->
+</section>
+{% endblock %}
