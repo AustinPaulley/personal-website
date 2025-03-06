@@ -19,7 +19,7 @@
         <h2>Featured Projects</h2>
         {% for project in projects %}
         <div class="card">
-            <h2>{{ project.name }}</h2>
+            <h1>{{ project.name }}</h1>
             <p>{{ project.description or 'No description available.' }}</p>
             <a href="{{ project.html_url }}" target="_blank">View on GitHub</a>
         </div>
