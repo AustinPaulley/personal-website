@@ -6,7 +6,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    github_username = 'AustinPaulley'
+    # Define specific repos to fetch
+    repo_urls = [
+        f'https://api.github.com/repos/{github_username}/personal-website',
+        f'https://api.github.com/repos/{github_username}/Linkedin-Scraper-and-Ai-Phishing-Email-Generator'
+    ]
+    projects = []
+    for url in repo_urls:
+        response = requests.get(url)
+        if response.status_code == 200:
+            projects.append(response.json())
+        else:
+            projects.append({'name': 'Error', 'description': f'Failed to load repo: {url}', 'html_url': url})
+    return render_template('home.html', projects=projects)
 
 @app.route('/resume')
 def resume():
