@@ -15,5 +15,15 @@
         <h2>Skills</h2>
         <p>Expirence With: | Java | C++ | Python | Linux | IntelliJ | Docker | Burp | Visual Studio | Kali Linux | AWS servers | HTML and Secure HTML | Digital Ocean | React | Azure | OpenAI API | Rust | IntelliJ | MongoDB | WireShark | SQL | JavaScript | Prolog | Grok API | Big Database |</p>
     </div>
+    <div class="card">
+        <h2>Featured Projects</h2>
+        {% for project in projects %}
+        <div class="card">
+            <h2>{{ project.name }}</h2>
+            <p>{{ project.description or 'No description available.' }}</p>
+            <a href="{{ project.html_url }}" target="_blank">View on GitHub</a>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 {% endblock %}
