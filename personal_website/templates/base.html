@@ -6,34 +6,48 @@
     <title>Austin Paulley - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/resume">Resume</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/writeups">Writeups</a></li>
-        </ul>
-        <div class="mode-toggle">Toggle Dark Mode</div>
-    </nav>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark');
-            const isDarkMode = document.body.classList.contains('dark');
-            localStorage.setItem('darkMode', isDarkMode);
-        }
 
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="dark">
+    <div id="vanta-bg">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/resume">Resume</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/writeups">Writeups</a></li>
+                <li><a href="#" onclick="window.open('https://dot.cards/apaulley', 'popup', 'width=800,height=600'); return false;">Socials</a></li>
+            </ul>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Vanta.js and Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const darkMode = localStorage.getItem('darkMode');
-            if (darkMode === 'true') {
-                document.body.classList.add('dark');
-            }
-            const toggleButton = document.querySelector('.mode-toggle');
-            toggleButton.addEventListener('click', toggleDarkMode);
+            document.body.style.visibility = 'visible';
+
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                backgroundColor: 0x0a0a0a,
+                color: 0x1DA1F2
+            });
         });
     </script>
 </body>
