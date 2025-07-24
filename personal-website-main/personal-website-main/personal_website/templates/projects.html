@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="projects">
+    <h1>GitHub Projects</h1>
+    {% if projects %}
+        {% for project in projects %}
+        <div class="card">
+            <h2>{{ project.name }}</h2>
+            <p>{{ project.description or 'No description available.' }}</p>
+            <a href="{{ project.html_url }}" class="project-link">View on GitHub</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Unable to fetch projects. Please check your GitHub username in app.py.</p>
+    {% endif %}
+</section>
+{% endblock %}
