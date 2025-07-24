@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="home">
+    <h1>Welcome to My Portfolio</h1>
+    <img src="{{ url_for('static', filename='images/ProfilePic.jpg') }}" alt="Profile Picture" class="profile-pic">
+    <div class="card">
+        <h2>About Me</h2>
+        <p>Hello! I’m Austin Paulley, a recent cybersecurity graduate from Stetson University with a Bachelor’s in Science and a passion for AI and space exploration. My academic journey—from earning an Associate of Arts at Daytona State College to mastering cybersecurity at Stetson—has equipped me with a strong foundation in Python, Java, C++, Linux, and tools like Docker and Kali Linux.</p>
+
+        <p>Driven by a love for innovation, I’m eager to push the boundaries of technology at the intersection of AI, cybersecurity, and space. My next step is pursuing a master’s degree to deepen my expertise and contribute to groundbreaking advancements in these fields. Lifelong learning is at my core, and I’m excited to apply my skills to shape the future.</p>
+
+        <p>Beyond academics, I’ve dedicated over 500 hours to mentoring and community leadership, fostering collaboration and growth. Explore my projects and papers on this website to see where I’ve been and where I’m headed—let’s connect!</p>
+    </div>
+    <div class="card">
+        <h2>Skills</h2>
+        <p>▪ Programming & Scripting: Python, Java, C++, Rust, JavaScript, Prolog, Linux.</p>
+        <p>▪ Web & DevOps: React, Secure HTML, Docker, Flask, Visual Studio, Digital Ocean, GitHub, Open AI API.</p>
+        <p>▪Cybersecurity Tools: Burp Suite, Wireshark, Kali Linux, Nmap, Metasploit.</p>
+        <p>▪Cloud & Infrastructure: AWS, Azure, MongoDB, Digital Ocean, SQL.</p>
+    </div>
+    <div class="card">
+        <h2>Featured Projects</h2>
+        {% for project in projects %}
+        <div class="card">
+            <h1>{{ project.name }}</h1>
+            <p>{{ project.description or 'No description available.' }}</p>
+            <a href="{{ project.html_url }}" target="_blank">View on GitHub</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
